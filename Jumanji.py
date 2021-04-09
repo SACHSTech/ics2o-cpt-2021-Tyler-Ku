@@ -89,6 +89,7 @@ else:
   speed = 3
   reliability = 6
 
+#Introduction and tutorial
 print("Strength:", strength, "    (Attack damage)")
 print("Speed:", speed, "       (Chance to dodge enemy attack) ")
 print("Reliability:", reliability, " (Chance to hit your attack) ")
@@ -114,6 +115,7 @@ print("")
 print("You come across a path splitting two ways. To the left is a war-torn field. To the right is the forest")
 print("")
 
+#Deciding fights
 fight_1 = True
 path_1 = ""
 
@@ -148,6 +150,7 @@ r_a_r = reliability
 
 firewall = 2
 
+#Fight 1 user decisons
 if fight_1 == True:
   print("You come upon your first enemy.")
   print("")
@@ -188,7 +191,7 @@ if fight_1 == True:
             character_health = character_health - 5
             print("Your health:", character_health, "/ 50")
           else:
-            if adware_health >= 0:
+            if adware_health > 0:
               print("Adware missed!")
         else:
           print("Adware has been defeated!")
@@ -206,7 +209,8 @@ if fight_1 == True:
             character_health = character_health - 5
             print("Your health:", character_health, "/ 50")
           else:
-            print("Adware missed!")
+            if adware_health > 0:
+              print("Adware missed!")
 
     #Ranged attack chances
     elif move == "B":
@@ -225,7 +229,7 @@ if fight_1 == True:
             character_health = character_health - 3
             print("Your health:", character_health, "/ 50")
           else:
-            if adware_health >= 0:
+            if adware_health > 0:
               print("Adware missed!")
         else:
           print("Adware has been defeated!")
@@ -243,7 +247,8 @@ if fight_1 == True:
             character_health = character_health - 3
             print("Your health:", character_health, "/ 50")
           else:
-            print("Adware missed!")
+            if adware_health > 0:
+              print("Adware missed!")
 
     #Health regeneration calculations
     else:
@@ -289,14 +294,17 @@ print("")
 
 fight_2 = True
 
+#User correctment
 while choice != "A" and choice != "B" and choice != "C" and choice != "D":
   print("Please choose a valid answer")
   choice = input("Your answer: ")
 
+#If the user gets the answer correct
 if choice == "D":
   print("Correct answer")
   fight_2 = False
 
+#If the user gets the answer wrong
 else:
   print("Incorrect answer")
   print("*You hear rumbling from above*")
@@ -373,6 +381,7 @@ if fight_2 == True:
           print("The Browser highjacker has been defeated!")
           input("Press enter to continue: ")
 
+      #If the player misses
       else:
           print("You missed your close ranged attack!")
           print("")
@@ -410,13 +419,18 @@ if fight_2 == True:
               print("")
               print("You have died")
               character_alive = False
+
+          #If the enemy misses
           else:
             if browser_health >= 0:
               print("Browser highjacker missed!")
+
+        #When the browser highjacker dies this plays
         else:
           print("The Browser highjacker has been defeated!")
           input("Press enter to continue: ")
 
+      #If you miss your ranged attack
       else:
           print("You missed your ranged attack!")
           print("")
@@ -431,8 +445,11 @@ if fight_2 == True:
               print("")
               print("You have died")
               character_alive = False
+
+          #If the enemy misses
           else:
-            print("Browser highjacker missed!")
+            if browser_health >= 0:
+              print("Browser highjacker missed!")
 
     #Health regeneration calculations
     else:
@@ -452,6 +469,7 @@ if fight_2 == True:
         else:
            print("You have no more Firewalls!")
 
+#Adventure text
 print("*The door rumbles and opens to a long and dark mountainside cave*")
 print("")
 print("You walk down it")
@@ -476,10 +494,12 @@ if choice == "temple":
   choice = input("Please type attack or sneak: ")
   print("")
 
+  #User correction
   while choice != "sneak" and choice != "attack":
     print("Please type either sneak or attack.")
     choice = input("What do you do?: ")
 
+  #Sets up a fight if the user chooses to attack
   if choice == "attack":
 
     character_health = 50
@@ -492,11 +512,13 @@ if choice == "temple":
     r_a_s = strength - 3
     r_a_r = reliability
 
+    #Firewall counting
     if fight_1 == True:
       firewall = 3
     else:
       firewall = 2
   
+    #Fight introduction
     print("Spyware Health:", spyware_health)
     print(name, "Health:", character_health)
 
@@ -538,14 +560,18 @@ if choice == "temple":
                 print("You have died")
                 character_alive = False
 
+            #Miss statement
             else:
               if spyware_health >= 0:
                 print("Spyware missed!")
+          
+          #If the boss dies, award the player
           else:
             print("Spyware has been defeated!")
             print("Your speed was increased by +2!")
             speed = speed + 2
 
+        #User misses attack
         else:
             print("You missed your close ranged attack!")
             print("")
@@ -561,7 +587,8 @@ if choice == "temple":
                 print("You have died")
                 character_alive = False
             else:
-              print("Spyware missed!")
+              if spyware_health >= 0:
+                print("Spyware missed!")
 
       #Ranged attack chances
       elif move == "B":
@@ -583,14 +610,19 @@ if choice == "temple":
                 print("")
                 print("You have died")
                 character_alive = False
+            
+            #Enemy misses
             else:
               if spyware_health >= 0:
                 print("Spyware missed!")
+
+          #If spyware dies this plays
           else:
             print("Spyware has been defeated!")
             print("Your speed has increased by +2!")
             speed = speed + 2
 
+        #If you miss your ranged attack
         else:
             print("You missed your ranged attack!")
             print("")
@@ -606,7 +638,8 @@ if choice == "temple":
                 print("You have died")
                 character_alive = False
             else:
-              print("Spyware missed!")
+              if spyware_health >= 0:
+                print("Spyware missed!")
 
       #Health regeneration calculations
       else:
@@ -636,14 +669,17 @@ if choice == "temple":
       print("Guess a number from 1-5")
       guess = int(input("Your guess: "))
 
+      #Variable set up
       guess_left = 3
       open_safe = False
 
+      #User corrections
       while guess != 1 and guess != 2 and guess != 3 and guess != 4 and guess != 5:
         print("")
         print("Please type a number from 1-5")
         guess = int(input("Your guess: "))
 
+      #If the guess isn't correct
       while guess != safe and guess_left > 1:
         guess_left = guess_left - 1
         print("")
@@ -651,6 +687,7 @@ if choice == "temple":
         print(guess_left, "/ 3")
         guess = int(input("Your guess: "))
 
+      #If the guess is right
       if guess == safe:
         print("")
         print("*You hear a click*")
@@ -678,11 +715,13 @@ if choice == "temple":
         r_a_s = strength - 3
         r_a_r = reliability
 
+        #Firewall calculations
         if fight_1 == True:
           firewall = 3
         else:
           firewall = 2
         
+        #Fight introduction
         print("")
         print("Spyware Health:", spyware_health)
         print(name, "Health:", character_health)
@@ -725,6 +764,7 @@ if choice == "temple":
                     print("You have died")
                     character_alive = False
 
+                #If enemy miss
                 else:
                   if spyware_health >= 0:
                     print("Spyware missed!")
@@ -815,6 +855,7 @@ if choice == "temple":
               else:
                 print("You have no more Firewalls!")
 
+#Treasury path
 else:
   choice == "treasury"
   print("")
@@ -822,17 +863,22 @@ else:
   print("You have three attempts to guess the number to unlock it.")
   safe = random.randint(1,5)
   print("")
+
+  #User input
   print("Guess a number from 1-5")
   guess = int(input("Your guess: "))
 
+  #Variable set up
   guess_left = 3
   open_safe = False
 
+  #If the guess is incorrect
   while guess != 1 and guess != 2 and guess != 3 and guess != 4 and guess != 5:
     print("")
     print("Please type a number from 1-5")
     guess = int(input("Your guess: "))
 
+  #If the guess is wrong
   while guess != safe and guess_left > 0:
     guess_left = guess_left - 1
     print("")
@@ -840,6 +886,7 @@ else:
     print(guess_left, "/ 3")
     guess = int(input("Your guess: "))
 
+  #If the guess is right
   if guess == safe:
     print("*You hear a click*")
     print("*The safe door swings open*")
@@ -852,6 +899,7 @@ else:
     print("You ran out of attempts.")
     print("*The safe locks you out*")
 
+#Adventure text
 print("")
 input("Press enter to continue: ")
 print("")
@@ -868,6 +916,7 @@ print("")
 print("Mydoom, the great worm, has appeared!")
 print("")
 
+#Variable set up
 f_fight = True
 character_health = 50
 mydoom_health = 65
@@ -879,6 +928,7 @@ c_r_r = reliability - 2
 r_a_s = strength - 3
 r_a_r = reliability
 
+#Firewall set up
 firewall = 2
 
 if fight_1 == True:
@@ -930,7 +980,7 @@ if f_fight == True:
               character_alive = False
 
           else:
-            if browser_health >= 0:
+            if mydoom_health >= 0:
               print("Mydoom missed!")
         else:
           print("Mydoom has been defeated!")
@@ -951,7 +1001,8 @@ if f_fight == True:
               print("You have died")
               character_alive = False
           else:
-            print("Mydoom missed!")
+            if mydoom_health >= 0:
+              print("Mydoom missed!")
 
     #Ranged attack chances
     elif move == "B":
@@ -995,7 +1046,8 @@ if f_fight == True:
               print("You have died")
               character_alive = False
           else:
-            print("Mydoom missed!")
+            if mydoom_health >= 0:
+              print("Mydoom missed!")
 
     #Health regeneration calculations
     else:
@@ -1014,6 +1066,8 @@ if f_fight == True:
           
         else:
            print("You have no more Firewalls!")
+
+#End game interactions
 
 if character_alive == True:
   print("")
